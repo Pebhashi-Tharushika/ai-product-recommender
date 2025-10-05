@@ -52,3 +52,12 @@ def delete_product_route(product_id: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="Product not found")
     return db_product
 
+
+# Get recommended products
+@app.get("/products/{product_id}/recommendations", response_model=list[schemas.Product])
+def get_recommendations(product_id: int, db: Session = Depends(get_db)):
+    recommendations = crud.get_recommended_products(db, product_id)
+    if recommendations is None:
+        raise HTTPException(status_code=404, detail="Product not found")
+    return recommendations
+

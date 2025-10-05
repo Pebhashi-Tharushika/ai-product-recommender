@@ -1,13 +1,13 @@
 from pydantic import BaseModel
-from typing import Optional, List
+from typing import List, Optional
 
 # for creation and update
 class ProductBase(BaseModel):
     name: str
     price: float
     category: str
-    tags: Optional[str] = None
-    description: Optional[str] = None
+    description: str
+    tags: Optional[List[str]] = None
     image_url: Optional[str] = None
 
 # for creating 
