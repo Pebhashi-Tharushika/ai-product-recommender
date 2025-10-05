@@ -1,0 +1,28 @@
+# Virtual Environments & Python Artifacts
+venv/   
+.venv/
+.Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Build & Dependencies (React/Node.js)
+node_modules/
+dist/
+build/
+
+
+# Environment variables
+/ai-product-recommender-be/.env
+/ai-product-recommender-fe/.env
+*.env.local
+.env.*.local
+
+# IDE and OS Files
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
+.idea/                   
+*.iml
