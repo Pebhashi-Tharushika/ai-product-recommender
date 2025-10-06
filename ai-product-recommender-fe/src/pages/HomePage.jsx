@@ -11,6 +11,7 @@ import {
   Button,
   CircularProgress,
   Container,
+  Box,
 } from "@mui/material";
 
 const HomePage = () => {
@@ -42,7 +43,7 @@ const HomePage = () => {
   }
 
   return (
-    <Container sx={{ mt: 4, mb: 4 }}>
+    <Box sx={{ my:4, mx:8 }}>
       <Typography
         variant="h4"
         align="center"
@@ -57,12 +58,13 @@ const HomePage = () => {
           No products available.
         </Typography>
       ) : (
-        <Grid container spacing={3}>
+        <Grid container spacing={3} sx={{ mt: 4 }}>
           {products.map((product) => (
-            <Grid item key={product.id} xs={12} sm={6} md={4} lg={3}>
+            <Grid item key={product.id} size={{xs:12, sm:6, md:3}} >
               <Card
                 sx={{
                   height: "100%",
+                  width: "100%",
                   display: "flex",
                   flexDirection: "column",
                   boxShadow: 3,
@@ -82,9 +84,9 @@ const HomePage = () => {
                 />
                 <CardContent sx={{ flexGrow: 1 }}>
                   <Typography
-                    variant="h6"
+                  fontSize={16}
+                  fontWeight={800}
                     gutterBottom
-                    sx={{ fontWeight: "bold" }}
                   >
                     {product.name}
                   </Typography>
@@ -107,7 +109,7 @@ const HomePage = () => {
           ))}
         </Grid>
       )}
-    </Container>
+    </Box>
   );
 };
 

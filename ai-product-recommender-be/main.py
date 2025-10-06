@@ -2,6 +2,7 @@ from fastapi import FastAPI, Depends, HTTPException
 from sqlalchemy.orm import Session
 import models, schemas, crud
 from database import SessionLocal, engine
+from fastapi.middleware.cors import CORSMiddleware
 
 # create database tables
 models.Base.metadata.create_all(bind=engine)
@@ -9,6 +10,13 @@ models.Base.metadata.create_all(bind=engine)
 # initialize FastAPI app
 app = FastAPI(title="AI Product Recommender API")
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000"],  # React frontend origin
+    allow_credentials=True,
+    allow_methods=["*"],  
+    allow_headers=["*"],  
+)
 
 def get_db():
     db = SessionLocal()
